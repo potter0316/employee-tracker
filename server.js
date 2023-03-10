@@ -3,6 +3,7 @@ const express = require('express');
 const mysql = require('mysql2');
 // import and requre inquirer@8.2.4
 const inquirer = require('inquirer');
+const cTable = require('console.table');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -19,9 +20,9 @@ const db = mysql.createConnection(
     user: 'root',
     // TODO: Add MySQL Password
     password: 'kratos',
-    database: 'books_db'
+    database: 'employee_db'
   },
-  console.log(`Connected to the books_db database.`)
+  console.log(`Connected to the employee_db database.`)
 );
 
 // Query database using COUNT() and GROUP BY
