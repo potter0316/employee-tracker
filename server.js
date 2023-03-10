@@ -13,17 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Connect to database
-const db = mysql.createConnection(
-  {
-    host: 'localhost',
-    // MySQL Username
-    user: 'root',
-    // TODO: Add MySQL Password
-    password: 'kratos',
-    database: 'employee_db'
-  },
-  console.log(`Connected to the employee_db database.`)
-);
+const db = require('./config/connection')
 
 // Query database using COUNT() and GROUP BY
 db.query('SELECT COUNT(id) AS total_count FROM favorite_books GROUP BY in_stock', function (err, results) {
