@@ -1,40 +1,23 @@
-const express = require("express");
+
 // Import and require mysql2
 const mysql = require("mysql2");
 // import and requre inquirer@8.2.4
 const inquirer = require("inquirer");
-const cTable = require("console.table");
-
-
-// Express middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// const cTable = require("console.table");
 
 // Connect to database
-const sequelize = require("./config/connection");
-const app = express();
-const PORT = process.env.PORT || 3001;
-
-sequelize.sync().then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+const db = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "kratos",
+  database: "employee_db",
 });
-// sequelize.promise()
-//   .query("Select")
-//   .then(([rows, fields]) => {
-//     console.log(rows);
-//   })
-//   .catch(console.log)
-//   .then(() => confirm.end());
 
-sequelize.connect((err) => {
+db.connect((err) => {
   if (err) throw err;
-  console.log("connected" + sequelize.threadId);
+  console.log("connected as id " + db.threadId);
   afterConnection();
 });
-
-afterConnection = () => {
-  promptUser();
-};
 
 afterConnection = () => {
   console.log("-----------------------------------");
@@ -45,14 +28,14 @@ afterConnection = () => {
   promptUser();
 };
 
-
-inquirer.prompt([
-  inquirer.prompt([
+const promptUser = () => {
+  inquirer
+    .prompt([
     {
       type: "list",
       name: "choices",
       message: "What would you like to do?",
-      Choices: [
+      choices: [
         "View All Employees",
         "Add Employee",
         "Update Employee Role",
@@ -63,8 +46,40 @@ inquirer.prompt([
         "Quit",
       ],
     },
-  ]),
-]);
+  ])
+
+.then((answers) => {
+  const { choices } = answers;
+
+  if (choices === "View all employees") {
+    showEmployees();
+  }
+  
+  if (choices === "Add an employee") {
+    addEmployee();
+  }
+
+  if (choices === "View all roles") {
+    showRoles();
+  }
+
+  if (choices === "Add a role") {
+    addRole();
+  }
+
+  if (choices === "View all departments") {
+    showDepartments();
+  }
+
+  if (choices === "Add a department") {
+    addDepartment();
+  }
+
+  if (choices === "Quit") {
+    db.end();
+  }
+});
+};
 
 // function to show all employees
 showEmployees = () => {
@@ -193,11 +208,3 @@ addDepartment = () => {
     }
   ])
 }
-
-app.use((req, res) => {
-  res.status(404).end();
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
