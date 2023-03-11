@@ -32,17 +32,17 @@ const promptUser = () => {
   inquirer
     .prompt([
     {
-      type: "list",
+        type: "list",
       name: "choices",
       message: "What would you like to do?",
       choices: [
-        "View All Employees",
-        "Add Employee",
-        "Update Employee Role",
-        "View All Roles",
-        "Add Role",
-        "View All Departments",
-        "Add Department",
+        "View all employees",
+        "Add employee",
+        "Update employee Role",
+        "View all roles",
+        "Add role",
+        "View all departments",
+        "Add department",
         "Quit",
       ],
     },
