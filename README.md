@@ -23,6 +23,7 @@ To take full advantage of the project node and npm are required to be installed.
 ## Usage
 
 ![professional README](./assets/employee-track.png)
+[Link to video](https://drive.google.com/file/d/1w2TcQjs5QC1KXhpo4DHEhTpm1TG-PG_Y/view)
 The user will navigate the prompts to see what the user would like to do!
 
 ## License
