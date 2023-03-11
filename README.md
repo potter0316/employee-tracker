@@ -4,7 +4,7 @@
 
 ## Description
 
-The project is an Employee Tracker. Using node and npm, the user creates their own Employee Tracker
+The project is an Employee Tracker. Using node and npm, the user creates their own Employee Tracker. The user can then pick a variety of prompts to choose what they would like to do.
 
 ## Table of Contents
 
@@ -22,8 +22,8 @@ To take full advantage of the project node and npm are required to be installed.
 
 ## Usage
 
-![professional README](./Assets/Team%20Profile.png).png)
-The user will answer all of the questions to create a Team Profile!
+![professional README](./assets/employee-track.png)
+The user will navigate the prompts to see what the user would like to do!
 
 ## License
 
